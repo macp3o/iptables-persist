@@ -4,6 +4,7 @@
 This `initd` service automatically persists `iptables` rules during power cycles.
 
 The service works in two steps:
+
 1. It saves `iptables` configuration changes on power down, and
 2. Reloads `iptables` rules on power up.
 
