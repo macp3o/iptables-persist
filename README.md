@@ -1,9 +1,9 @@
 
 # iptables-autoload
 
-### Persistent iptables Rules During Power Cycles
+`iptables-autoload` is an `initd` service that automatically persists `iptables` rules during power cycles.
 
-`iptables-autoload` is an `initd` service that automatically persists `iptables` rules during power cycles. `iptables` rules are automatically restored after power on to the value they had before halting the system.
+With `iptables-autoload`, `iptables` rules are automatically restored after power on to the value they had before halting the system.
 
 
 ## How It Works
@@ -15,7 +15,7 @@ The service works in two steps:
 
 Rules are saved to and reloaded from `/etc/iptables.autoload`
 
-Rules can be saved to disk at any other time by running:
+The rules can be saved to disk at any other time by running:
 
 > service iptables-autoload restart
 
