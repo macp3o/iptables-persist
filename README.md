@@ -1,7 +1,7 @@
 
-# iptables-autoload
+# Persistent iptables and Autoloader
 
-`iptables-autoload` is an `initd` service that automatically persists `iptables` rules during power cycles.
+`iptables-autoload` is an `initd` service that automatically persists and reloads `iptables` rules during power cycles.
 
 With `iptables-autoload`, `iptables` rules are automatically restored after power on to the value they had before halting the system.
 
@@ -20,17 +20,18 @@ The rules can be saved to disk at any other time by running:
 > service iptables-autoload restart
 
 
-## Requirements
+## Installation
+
+### Requirements
 
  * `iptables` should be installed.
  * The current version was tested on Debian Wheezy.
 
-
-## Installation
+### Setup
 
 To setup the script:
 
-1. Run `iptables-save > /etc/iptables.autoload`. This saves the current `iptables` rules.
+1. Run `iptables-save > /etc/iptables.autoload` to save the current `iptables` rules.
 2. Copy the `iptables-autoload` script into `/etc/init.d/`
 3. Run `update-rc.d iptables-autoload defaults`
 
