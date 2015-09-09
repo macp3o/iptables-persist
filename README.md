@@ -1,39 +1,32 @@
+# Persistent iptables
 
-# Persistent iptables and Autoloader
+`iptables-persist` is an `init.d` service that automatically persists and reloads `iptables` rules during power cycles.
 
-`iptables-autoload` is an `initd` service that automatically persists and reloads `iptables` rules during power cycles.
-
-With `iptables-autoload`, `iptables` rules are automatically restored after power on to the value they had before halting the system.
-
-
-## How It Works
-
-The service works in two steps:
-
-1. It saves `iptables` configuration changes on power down, and
-2. It reloads the saved rules on power up.
-
-Rules are saved to and reloaded from `/etc/iptables.autoload`
-
-The rules can be saved to disk at any other time by running:
-
-> service iptables-autoload restart
+With `iptables-persist`, `iptables` rules are automatically saved when the system shutdowns and restored to the saved value after powering up.
 
 
 ## Installation
 
-### Requirements
+To install the script:
 
- * `iptables` should be installed.
- * The current version was tested on Debian Wheezy.
+1. Run as root: `iptables-save > /etc/iptables.persist` to save the current `iptables` rules.
+2. Copy the `iptables-persist` script into `/etc/init.d/`
+3. Run `update-rc.d iptables-persist defaults`
 
-### Setup
 
-To setup the script:
+## Usage
 
-1. Run `iptables-save > /etc/iptables.autoload` to save the current `iptables` rules.
-2. Copy the `iptables-autoload` script into `/etc/init.d/`
-3. Run `update-rc.d iptables-autoload defaults`
+The rules are persisted in `/etc/iptables.persist`
+
+To force saving the rules, for instance after making changes:
+~~~
+	# service iptables-autoload restart
+~~~
+
+
+## License
+
+MIT license. See the [LICENSE](https://raw.githubusercontent.com/p3o/iptables-persist/master/LICENSE) file. 
 
 Enjoy!
 

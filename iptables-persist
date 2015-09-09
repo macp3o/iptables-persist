@@ -1,6 +1,6 @@
 #!/bin/sh
 ### BEGIN INIT INFO
-# Provides: iptables-autoload
+# Provides: iptables-persist
 # Required-Start: mountkernfs $local_fs
 # Required-Stop: $local_fs
 # Default-Start: 2 3 4 5
@@ -8,7 +8,7 @@
 # Short-Description: Persist iptables rules during power cycles
 ### END INIT INFO
 
-CFG=/etc/iptables.autoload
+CFG=/etc/iptables.persist
 
 case "$1" in
 	start)
