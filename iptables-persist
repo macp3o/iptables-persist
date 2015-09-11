@@ -12,14 +12,20 @@ CFG=/etc/iptables.persist
 
 case "$1" in
 	start)
-		/sbin/iptables-restore < $CFG
-		echo "iptables loaded from file"
+		if [ -a $CFG ]; then
+			/sbin/iptables-restore < $CFG
+			echo "iptables rules restored from disk"
+		else
+			echo "No initialization file; using current iptables rules."
+		fi
 	 ;;
+
 	stop)
 	restart)
 		/sbin/iptables-save > $CFG
-		echo "iptables saved to file"
+		echo "iptables rules persisted to disk"
 	 ;;
+
 	*)
 		echo "Usage: $0 {start|stop|restart}"
 	;;
