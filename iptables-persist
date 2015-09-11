@@ -14,16 +14,18 @@ case "$1" in
 	start)
 		if [ -a $CFG ]; then
 			/sbin/iptables-restore < $CFG
-			echo "iptables rules restored from disk"
+			echo "iptables rules restored from disk."
 		else
-			echo "No initialization file; using current iptables rules."
+			echo "No persisted rules on disk."
+			echo "Creating persisted rules file from loaded iptables rules."
+			/sbin/iptables-save > $CFG
 		fi
 	 ;;
 
 	stop)
 	restart)
 		/sbin/iptables-save > $CFG
-		echo "iptables rules persisted to disk"
+		echo "iptables rules persisted to disk."
 	 ;;
 
 	*)

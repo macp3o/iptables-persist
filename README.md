@@ -9,7 +9,7 @@ From a command prompt, run as root (e.g. using `sudo`):
 ~~~bash
 	#  cp iptables-persist /etc/init.d/
 	#  update-rc.d iptables-persist defaults
-	# service iptables-persist start
+	#  service iptables-persist start
 ~~~
 
 
@@ -17,11 +17,11 @@ From a command prompt, run as root (e.g. using `sudo`):
 
 The rules are persisted in `/etc/iptables.persist`
 
-The current `iptables` rules are adopted by `Iptables-persist` if there is no rules file. This is the case the first time the script is run.
+If no persisted rules file exists, `Iptables-persist` uses the currently running `iptables` rules.
 
 To force saving the rules at any other time, run as root:
-~~~
-	# service iptables-persist restart
+~~~bash
+	#  service iptables-persist restart
 ~~~
 
 
