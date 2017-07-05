@@ -7,9 +7,9 @@
 
 From a command prompt, run as root (e.g. using `sudo`):
 ~~~bash
-	#  cp iptables-persist /etc/init.d/
-	#  update-rc.d iptables-persist defaults
-	#  service iptables-persist start
+#  cp iptables-persist /etc/init.d/
+#  update-rc.d iptables-persist defaults
+#  service iptables-persist start
 ~~~
 
 
@@ -19,7 +19,7 @@ The rules are persisted in `/etc/iptables.persist`. If no persisted rules file e
 
 To force saving the rules at any time, run as root:
 ~~~bash
-	#  service iptables-persist restart
+#  service iptables-persist restart
 ~~~
 
 
